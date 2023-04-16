@@ -1,0 +1,240 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    body {
+        zoom: 0.9;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+    }
+}
+
+@layer components {
+    .container {
+        @apply sm:max-w-[26rem] md:max-w-[94rem] md:px-2 sm:px-4 self-center;
+    }  
+}
+
+/* Buttons (Start) */
+.btn-primary-sm {
+  @apply px-4 py-2 border text-xs border-web-ascent bg-web-ascent font-medium text-white relative hover:bg-web-ascent-dark active:bg-web-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+}
+.btn-primary-md {
+  @apply px-5 py-3 border text-sm border-web-ascent bg-web-ascent font-medium text-white relative hover:bg-web-ascent-dark active:bg-web-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+}
+.btn-primary-lg {
+  @apply px-6 py-3 border text-lg border-web-ascent bg-web-ascent font-medium text-white relative hover:bg-web-ascent-dark active:bg-web-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+}
+.btn-secondary-sm {
+  @apply px-4 py-2 border text-xs border-web-ascent border-opacity-5 bg-web-ascent bg-opacity-10 font-medium text-web-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+}
+.btn-secondary-md {
+  @apply px-5 py-3 border text-sm border-web-ascent border-opacity-5 bg-web-ascent bg-opacity-10 font-medium text-web-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+}
+.btn-secondary-lg {
+  @apply px-6 py-3 border text-lg border-web-ascent border-opacity-5 bg-web-ascent bg-opacity-10 font-medium text-web-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+}
+.btn-light-sm {
+  @apply px-4 py-2 border text-xs border-slate-200 border-opacity-5 bg-slate-200 font-medium tracking-widest text-gray-800 relative hover:bg-slate-800 active:bg-slate-800 hover:text-white active:text-white transition duration-300 ease-in-out hover:ease-in-out
+}
+.btn-light-md {
+  @apply px-5 py-3 border text-sm border-slate-200 border-opacity-5 bg-slate-200 font-medium tracking-widest text-gray-800 relative hover:bg-slate-800 active:bg-slate-800 hover:text-white active:text-white transition duration-300 ease-in-out hover:ease-in-out
+}
+.btn-light-lg {
+  @apply px-6 py-3 border text-lg border-slate-200 border-opacity-5 bg-slate-200 font-medium tracking-widest text-gray-800 relative hover:bg-slate-800 active:bg-slate-800 hover:text-white active:text-white transition duration-300 ease-in-out hover:ease-in-out
+}
+.btn-danger-sm {
+  @apply px-4 py-2 border text-xs border-red-500 bg-red-500 font-medium text-white relative hover:bg-red-700 active:bg-red-700 tracking-widest
+}
+.btn-danger-md {
+  @apply px-5 py-3 border text-sm border-red-500 bg-red-500 font-medium text-white relative hover:bg-red-700 active:bg-red-700 tracking-widest
+}
+.btn-danger-lg {
+  @apply px-6 py-3 border text-lg border-red-500 bg-red-500 font-medium text-white relative hover:bg-red-700 active:bg-red-700 tracking-widest
+}
+.btn-danger-secondary-sm {
+  @apply px-4 py-2 border text-xs border-red-500 border-opacity-5 bg-red-500 bg-opacity-10 font-medium text-red-500 relative hover:bg-opacity-20 active:bg-opacity-20
+}
+.btn-danger-secondary-md {
+  @apply px-5 py-3 border text-sm border-red-500 border-opacity-5 bg-red-500 bg-opacity-10 font-medium text-red-500 relative hover:bg-opacity-20 active:bg-opacity-20
+}
+.btn-danger-secondary-lg {
+  @apply px-6 py-3 border text-lg border-red-500 border-opacity-5 bg-red-500 bg-opacity-10 font-medium text-red-500 relative hover:bg-opacity-20 active:bg-opacity-20
+}
+button[disabled] {
+  @apply opacity-70
+}
+.link {
+  @apply text-sm font-medium text-web-ascent hover:text-web-ascent-dark transition duration-200 ease-in-out hover:ease-in-out flex items-center justify-center w-fit
+}
+
+.btn-ascent-link-md {
+  @apply py-3 text-sm font-medium text-web-ascent relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:bg-web-ascent uppercase tracking-wider transition duration-500 ease-in-out hover:ease-in-out hover:after:opacity-0 after:transition after:duration-500 after:ease-in-out hover:after:ease-in-out
+}
+/* Buttons (End) */
+
+/* Input (Start) */
+.input-group {
+  @apply flex flex-col
+}
+.input-box-sm {
+  @apply px-5 py-2 border text-xs outline-web-ascent border-slate-300 font-medium bg-white
+}
+.input-box-md {
+  @apply px-6 py-3 border text-sm outline-web-ascent border-slate-300 font-medium bg-white
+}
+.input-box-lg {
+  @apply px-7 py-3 border text-lg outline-web-ascent border-slate-300 font-medium bg-white
+}
+.input-box-sm.input-invalid,
+.input-box-md.input-invalid,
+.input-box-lg.input-invalid {
+  @apply border-red-600
+}
+.input-label {
+  @apply text-xs font-medium text-slate-800 mb-2 text-left
+}
+.input-error {
+  @apply text-xs font-medium text-red-600 mt-2 text-left
+}
+.input-box-sm.tagify,
+.input-box-md.tagify,
+.input-box-lg.tagify {
+  @apply p-[0.3rem]
+}
+.tagify.tagify--focus {
+  @apply ring-[1.5px] ring-web-ascent
+}
+input:not(.peer)[type=checkbox] {
+  @apply appearance-none h-4 w-4 border border-gray-300 bg-white checked:border-web-ascent checked:bg-web-ascent focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer text-white
+}
+input:not(.peer)[type=checkbox]:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+}
+/* input:read-only:not([type=submit]) {
+  @apply bg-slate-200
+} */
+.input-box-dragable {
+  @apply relative h-[200px] flex flex-col space-y-3 justify-center items-center w-full border-2 border-slate-300 border-dashed text-slate-600 font-medium text-sm
+}
+.input-box-dragable input {
+  @apply absolute h-[200px] w-full cursor-pointer opacity-0
+}
+.input-thumbnail-preview {
+  @apply h-[200px] w-max border-slate-200 border-2
+}
+/* Input (End) */
+
+/* Alert Boxes (Start) */
+.alert-success-sm {
+    @apply px-3 py-2 bg-green-200 text-green-900 flex items-center justify-center space-x-3 text-xs font-medium
+}
+.alert-success-md {
+    @apply px-3 py-2 bg-green-200 text-green-900 flex items-center justify-center space-x-3 text-sm font-medium
+}
+.alert-success-lg {
+    @apply px-3 py-2 bg-green-200 text-green-900 flex items-center justify-center space-x-3 text-lg font-medium
+}
+
+.alert-danger-sm {
+    @apply px-3 py-2 bg-red-200 text-red-900 flex items-center justify-center space-x-3 text-xs font-medium
+}
+.alert-danger-md {
+    @apply px-3 py-2 bg-red-200 text-red-900 flex items-center justify-center space-x-3 text-sm font-medium
+}
+.alert-danger-lg {
+    @apply px-3 py-2 bg-red-200 text-red-900 flex items-center justify-center space-x-3 text-lg font-medium
+}
+
+.alert-warning-sm {
+    @apply px-3 py-2 bg-yellow-200 text-yellow-900 flex items-center justify-center space-x-3 text-xs font-medium
+}
+.alert-warning-md {
+    @apply px-3 py-2 bg-yellow-200 text-yellow-900 flex items-center justify-center space-x-3 text-sm font-medium
+}
+.alert-warning-lg {
+    @apply px-3 py-2 bg-yellow-200 text-yellow-900 flex items-center justify-center space-x-3 text-lg font-medium
+}
+/* Alert Boxes (Start) */
+
+
+/* Sweet Alerts (Start) */
+.swal-modal {
+    @apply-lg border shadow-lg shadow-[rgba(0,0,0,0.3)]
+}
+.swal-title {
+    @apply text-2xl text-black font-semibold
+}
+.swal-text {
+    @apply text-sm text-slate-600 text-center
+}
+.swal-button:focus {
+    @apply shadow-none border-none outline-none
+}
+.swal-button.swal-button--confirm {
+    @apply btn-primary-md
+}
+.swal-button.swal-button--cancel {
+    @apply btn-secondary-md
+}
+.swal-icon--success__line {
+    @apply bg-green-500
+}
+.swal-icon--success__ring {
+    @apply border-[#4bc10678]
+}
+.swal-footer {
+    @apply mb-5 text-center
+}
+/* Sweet Alerts (End) */
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Header (Start) */
+.header-link-list {
+  @apply flex items-center justify-center space-x-5 tracking-widest text-sm
+}
+
+.header-link-list li a {
+  @apply text-gray-900 relative w-fit whitespace-nowrap tracking-widest
+}
+.header-link-list li a::after {
+  content: " ";
+  height: 2px;
+  width: 0%;
+  background-color: #000;
+  position: absolute;
+  bottom: -10px;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  transition: 0.3s ease;
+}
+.header-link-list li a:hover::after {
+  content: " ";
+  height: 2px;
+  width: 100%;
+  background-color: #000;
+  position: absolute;
+  bottom: -10px;
+  transition: 0.3s ease;
+}
+
+.header-dropdown {
+  @apply relative w-fit
+}
+.header-dropdown .header-dropdown-content {
+  @apply absolute shadow-[0px_5px_15px_rgba(0,0,0,0.2)] right-0 bg-white
+}
+/* Header (End) */
