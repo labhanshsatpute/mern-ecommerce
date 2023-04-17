@@ -1,11 +1,10 @@
 import React from "react";
+import FrontCarousel from "../components/homeSections/FrontCarousel";
 
 const Home = () => {
   return (
     <React.Fragment>
-      <section>
-        this is home
-      </section>
+      <FrontCarousel/>
     </React.Fragment>
   );
 }
