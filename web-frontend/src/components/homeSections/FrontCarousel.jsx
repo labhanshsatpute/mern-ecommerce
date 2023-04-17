@@ -1,10 +1,10 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from 'swiper';
+import { Navigation, Pagination } from "swiper";
 
 import "swiper/css";
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const CarouselBanner = ({ image, link }) => {
   return (
@@ -26,7 +26,7 @@ const FrontCarousel = () => {
             "--swiper-pagination-color": "#fff",
             "--swiper-navigation-color": "#fff",
           }}
-          modules={[ Navigation, Pagination ]} navigation pagination={{ clickable: true, dynamicBullets: true }} loop >
+          modules={[ Navigation, Pagination ]} navigation pagination={{ clickable: true, dynamicBullets: true }} loop>
           <SwiperSlide>
             <CarouselBanner image={"/images/front-carousel/img-1.png"} link={"#"} />
           </SwiperSlide>
