@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FiShoppingBag, FiTrash2 } from "react-icons/fi";
 
 const CartItem = () => {
@@ -33,15 +33,29 @@ const CartItem = () => {
 const HeaderCartDropdown = () => {
 
   const [state, setState] = useState(true);
+  const dropdownRef = useRef(null);
 
   const handleToggleDropdown = () => {
     if (state) setState(false);
     else setState(true);
   }
 
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setState(true);
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, []);
+
   return (
     <React.Fragment>
-      <div className="header-dropdown">
+      <div className="header-dropdown" ref={dropdownRef}>
         <button onClick={() => handleToggleDropdown()}>
           <FiShoppingBag size={23} />
         </button>
