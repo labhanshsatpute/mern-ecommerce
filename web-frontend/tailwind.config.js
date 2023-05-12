@@ -33,8 +33,8 @@ module.exports = {
 
         'web-dominant': '#FFF',
         'web-complement' : '#e0e7ff',
-        'web-ascent' : '#fb8500',
-        'web-ascent-dark' : '#fb5607',
+        'web-ascent' : '#8338ec',
+        'web-ascent-dark' : '#8338ec',
       },
     },
     

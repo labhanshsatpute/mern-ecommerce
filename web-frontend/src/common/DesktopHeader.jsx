@@ -8,14 +8,14 @@ const DesktopHeader = () => {
     <React.Fragment>
       <nav className="bg-white w-full py-5 shadow-lg z-50 relative">
         <div className="container">
-          <div className="grid grid-cols-3 items-center">
+          <div className="grid grid-cols-3 items-center justify-between">
 
             <div>
               <a href="#" className="font-medium text-web-ascent">Ecommerce</a>
             </div>
 
-            <div>
-              <ul className="header-link-list">
+            <div className="">
+              <ul className="header-link-list md:flex sm:hidden">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Shop</a></li>
                 <li><a href="#">Categories</a></li>
