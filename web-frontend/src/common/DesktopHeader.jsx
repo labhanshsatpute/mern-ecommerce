@@ -2,6 +2,7 @@ import React from "react";
 
 import HeaderCartDropdown from "../components/dropdowns/HeaderCartDropdown";
 import { FiSearch, FiUser } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const DesktopHeader = () => {
   return (
@@ -11,7 +12,7 @@ const DesktopHeader = () => {
           <div className="grid grid-cols-3 items-center justify-between">
 
             <div>
-              <a href="#" className="font-medium text-web-ascent">Ecommerce</a>
+              <Link to={"/"} className="font-medium text-web-ascent">Ecommerce</Link>
             </div>
 
             <div className="">
@@ -32,7 +33,7 @@ const DesktopHeader = () => {
                 </div>
                 <HeaderCartDropdown />
                 <div>
-                  <button><FiUser size={23} /></button>
+                  <Link to={"/dashboard"}><FiUser size={23} /></Link>
                 </div>
                 
                 
