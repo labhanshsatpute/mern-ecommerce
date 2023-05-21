@@ -10,8 +10,8 @@ const ProductSection = () => {
 
           <div>
             <h1 className="text-center">
-              <span className="text-4xl font-bold">Explore Our </span>
-              <span class="font-bold text-transparent text-4xl bg-clip-text bg-gradient-to-r from-ascent to-ascent-dark">Products</span>
+              <span className="md:text-4xl sm:text-3xl font-bold">Explore Our </span>
+              <span class="font-bold text-transparent md:text-4xl sm:text-3xl bg-clip-text bg-gradient-to-r from-ascent to-ascent-dark">Products</span>
             </h1>
           </div>
 
