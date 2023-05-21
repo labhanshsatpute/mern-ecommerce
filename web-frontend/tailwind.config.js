@@ -26,15 +26,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        'admin-dominant': '#FFF',
-        'admin-complement' : '#e0e7ff',
-        'admin-ascent' : '#3a0ca3',
-        'admin-ascent-dark' : '#1b0156',
-
-        'web-dominant': '#FFF',
-        'web-complement' : '#e0e7ff',
-        'web-ascent' : '#8338ec',
-        'web-ascent-dark' : '#8338ec',
+        'dominant': '#FFF',
+        'complement' : '#e0e7ff',
+        'ascent' : '#8338ec',
+        'ascent-dark' : '#8338ec',
       },
     },
     

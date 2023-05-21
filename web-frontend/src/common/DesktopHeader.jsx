@@ -1,6 +1,6 @@
 import React from "react";
 
-import HeaderCartDropdown from "../components/dropdown/HeaderCartDropdown";
+import HeaderCartDropdown from "../components/dropdowns/HeaderCartDropdown";
 import { FiSearch, FiUser } from "react-icons/fi";
 
 const DesktopHeader = () => {

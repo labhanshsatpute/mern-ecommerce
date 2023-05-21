@@ -20,28 +20,28 @@
 
 @layer components {
     .container {
-        @apply sm:max-w-[26rem] md:max-w-[94rem] md:px-2 sm:px-4 self-center;
+        @apply sm:max-w-[28rem] md:max-w-[94rem] md:px-2 sm:px-4 self-center;
     }  
 }
 
 /* Buttons (Start) */
 .btn-primary-sm {
-  @apply px-4 py-2 border text-xs border-web-ascent bg-web-ascent font-medium text-white relative hover:bg-web-ascent-dark active:bg-web-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-4 py-2 border text-xs border-ascent bg-ascent font-medium text-white relative hover:bg-ascent-dark active:bg-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out
 }
 .btn-primary-md {
-  @apply px-5 py-3 border text-sm border-web-ascent bg-web-ascent font-medium text-white relative hover:bg-web-ascent-dark active:bg-web-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-5 py-3 border text-sm border-ascent bg-ascent font-medium text-white relative hover:bg-ascent-dark active:bg-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out
 }
 .btn-primary-lg {
-  @apply px-6 py-3 border text-lg border-web-ascent bg-web-ascent font-medium text-white relative hover:bg-web-ascent-dark active:bg-web-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-6 py-3 border text-lg border-ascent bg-ascent font-medium text-white relative hover:bg-ascent-dark active:bg-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out
 }
 .btn-secondary-sm {
-  @apply px-4 py-2 border text-xs border-web-ascent border-opacity-5 bg-web-ascent bg-opacity-10 font-medium text-web-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-4 py-2 border text-xs border-ascent border-opacity-5 bg-ascent bg-opacity-10 font-medium text-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out
 }
 .btn-secondary-md {
-  @apply px-5 py-3 border text-sm border-web-ascent border-opacity-5 bg-web-ascent bg-opacity-10 font-medium text-web-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-5 py-3 border text-sm border-ascent border-opacity-5 bg-ascent bg-opacity-10 font-medium text-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out
 }
 .btn-secondary-lg {
-  @apply px-6 py-3 border text-lg border-web-ascent border-opacity-5 bg-web-ascent bg-opacity-10 font-medium text-web-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-6 py-3 border text-lg border-ascent border-opacity-5 bg-ascent bg-opacity-10 font-medium text-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out
 }
 .btn-light-sm {
   @apply px-4 py-2 border text-xs border-slate-200 border-opacity-5 bg-slate-200 font-medium tracking-widest text-gray-800 relative hover:bg-slate-800 active:bg-slate-800 hover:text-white active:text-white transition duration-300 ease-in-out hover:ease-in-out
@@ -74,11 +74,11 @@ button[disabled] {
   @apply opacity-70
 }
 .link {
-  @apply text-sm font-medium text-web-ascent hover:text-web-ascent-dark transition duration-200 ease-in-out hover:ease-in-out flex items-center justify-center w-fit
+  @apply text-sm font-medium text-ascent hover:text-ascent-dark transition duration-200 ease-in-out hover:ease-in-out flex items-center justify-center w-fit
 }
 
 .btn-ascent-link-md {
-  @apply py-3 text-sm font-medium text-web-ascent relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:bg-web-ascent uppercase tracking-wider transition duration-500 ease-in-out hover:ease-in-out hover:after:opacity-0 after:transition after:duration-500 after:ease-in-out hover:after:ease-in-out
+  @apply py-3 text-sm font-medium text-ascent relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:bg-ascent uppercase tracking-wider transition duration-500 ease-in-out hover:ease-in-out hover:after:opacity-0 after:transition after:duration-500 after:ease-in-out hover:after:ease-in-out
 }
 /* Buttons (End) */
 
@@ -87,13 +87,13 @@ button[disabled] {
   @apply flex flex-col
 }
 .input-box-sm {
-  @apply px-5 py-2 border text-xs outline-web-ascent border-slate-300 font-medium bg-white
+  @apply px-5 py-2 border text-xs outline-ascent border-slate-300 font-medium bg-white
 }
 .input-box-md {
-  @apply px-6 py-3 border text-sm outline-web-ascent border-slate-300 font-medium bg-white
+  @apply px-6 py-3 border text-sm outline-ascent border-slate-300 font-medium bg-white
 }
 .input-box-lg {
-  @apply px-7 py-3 border text-lg outline-web-ascent border-slate-300 font-medium bg-white
+  @apply px-7 py-3 border text-lg outline-ascent border-slate-300 font-medium bg-white
 }
 .input-box-sm.input-invalid,
 .input-box-md.input-invalid,
@@ -112,10 +112,10 @@ button[disabled] {
   @apply p-[0.3rem]
 }
 .tagify.tagify--focus {
-  @apply ring-[1.5px] ring-web-ascent
+  @apply ring-[1.5px] ring-ascent
 }
 input:not(.peer)[type=checkbox] {
-  @apply appearance-none h-4 w-4 border border-gray-300 bg-white checked:border-web-ascent checked:bg-web-ascent focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer text-white
+  @apply appearance-none h-4 w-4 border border-gray-300 bg-white checked:border-ascent checked:bg-ascent focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer text-white
 }
 input:not(.peer)[type=checkbox]:checked {
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
@@ -241,16 +241,16 @@ input:not(.peer)[type=checkbox]:checked {
 
 /* Footer (Start) */
 .footer-link {
-  @apply text-gray-700 hover:text-web-ascent-dark text-sm flex items-center justify-start transition duration-200 ease-in-out hover:ease-in-out w-fit
+  @apply text-gray-700 hover:text-ascent-dark text-sm flex items-center justify-start transition duration-200 ease-in-out hover:ease-in-out w-fit
 }
 .footer-social-media {
-  @apply h-11 w-11 bg-web-ascent bg-opacity-10 flex items-center justify-center rounded-lg relative transition duration-300 ease-in-out
+  @apply h-11 w-11 bg-ascent bg-opacity-10 flex items-center justify-center rounded-lg relative transition duration-300 ease-in-out
 }
 .footer-social-media svg {
-  @apply h-5 w-5 stroke-2 stroke-web-ascent transition duration-300 ease-in-out
+  @apply h-5 w-5 stroke-2 stroke-ascent transition duration-300 ease-in-out
 }
 .footer-social-media:hover {
-  @apply bg-web-ascent-dark transition duration-300 ease-in-out
+  @apply bg-ascent-dark transition duration-300 ease-in-out
 }
 .footer-social-media:hover svg {
   @apply stroke-white transition duration-300 ease-in-out

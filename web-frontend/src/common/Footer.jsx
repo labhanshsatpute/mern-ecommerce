@@ -1,5 +1,5 @@
 import React from "react";
-import { TbTruckDelivery, TbHeadphones, TbExchange, TbWallet } from "react-icons/tb";
+import { TbTruckDelivery, TbHeadphones, TbRefresh, TbWallet } from "react-icons/tb";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
@@ -34,7 +34,7 @@ const Footer = () => {
 
               <div className="flex items-center justify-center space-x-6">
                 <div>
-                  <TbExchange size={60} strokeWidth={1.5} className="stroke-web-ascent-dark" />
+                  <TbRefresh size={60} strokeWidth={1.5} className="stroke-web-ascent-dark" />
                 </div>
                 <div>
                   <h1 className="font-semibold text-lg pb-1">7 Days Return</h1>
@@ -59,7 +59,7 @@ const Footer = () => {
 
         {/* Footer Content Div (Start) */}
         <div className="bg-slate-900">
-          <div className="container py-16">
+          <div className="container md:py-16 sm:py-10">
             <div className="grid md:grid-cols-6 sm:grid-cols-1 gap-10">
 
               <div className="md:col-span-1 md:order-1 sm:order-2">
