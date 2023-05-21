@@ -29,7 +29,7 @@ module.exports = {
         'dominant': '#FFF',
         'complement' : '#e0e7ff',
         'ascent' : '#8338ec',
-        'ascent-dark' : '#8338ec',
+        'ascent-dark' : '#501f96',
       },
     },
     

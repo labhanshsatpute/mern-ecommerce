@@ -256,3 +256,16 @@ input:not(.peer)[type=checkbox]:checked {
   @apply stroke-white transition duration-300 ease-in-out
 }
 /* Footer (End) */
+
+
+/* Home PAge */
+.home-products-tabs {
+  @apply flex space-x-5 items-center justify-center md:mb-12 sm:mb-6 font-medium text-lg
+}
+.home-products-tabs li {
+  @apply cursor-pointer border-b-2 pb-2 border-b-transparent md:text-base sm:text-sm
+}
+.home-products-tabs li.react-tabs__tab--selected {
+  @apply cursor-pointer text-ascent border-b-ascent
+}
+

@@ -4,7 +4,7 @@ import { BsArrowRightShort } from "react-icons/bs";
 const BottomBanner = () => {
   return (
     <React.Fragment>
-      <section className="md:py-20 sm:py-10">
+      <section className="md:pb-20 sm:pb-10">
         <div className="container">
           <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-6">
 
