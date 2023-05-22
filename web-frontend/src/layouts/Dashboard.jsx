@@ -7,7 +7,7 @@ const Dashboard = () => {
     <React.Fragment>
       <section className="md:py-16 sm:py-10">
         <div className="container">
-          <div className="grid md:grid-cols-12 sm:grid-cols-1">
+          <div className="grid md:grid-cols-12 sm:grid-cols-1 md:gap-10 sm:gap-7">
             <div className="md:col-span-3 sm:col-span-1">
               <DashboardSidebar />
             </div>
