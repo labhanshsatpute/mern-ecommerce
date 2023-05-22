@@ -1,5 +1,5 @@
 import React from "react";
-import OrderDetailsCard from "../../components/order-details/OrderDetailsCard";
+import OrderDetailsCard from "../../components/order-details-card/OrderDetailsCard";
 
 const OrderList = () => {
   return (

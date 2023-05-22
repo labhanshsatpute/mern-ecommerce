@@ -10,6 +10,7 @@ import Home from "../views/Home";
 import AccountInformation from "../views/dashboard/AccountInformation";
 import OrderList from "../views/dashboard/OrderList";
 import OrderDetails from "../views/dashboard/OrderDetails";
+import AddressBook from "../views/dashboard/AddressBook";
 
 const App = () => {
 
@@ -38,6 +39,8 @@ const App = () => {
             <Route path="/dashboard" element={<AccountInformation/>} />
             <Route path="/orders" element={<OrderList/>} />
             <Route path="/order/details/:id" element={<OrderDetails/>} />
+            <Route path="/address-book" element={<AddressBook/>} />
+            {/* <Route path="/address-edit/:id" element={</>} /> */}
           </Route>
 
         </Route>
