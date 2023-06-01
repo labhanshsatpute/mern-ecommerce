@@ -17,6 +17,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           dryRun: false
           forceUpload: true 
-          localDir: './'
+          localDir: './backend'
           remoteDir: '/var/www/html'
           exclude: '.git*,.DS_Store'
