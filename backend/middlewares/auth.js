@@ -4,17 +4,17 @@ const UserAccessToken = require('../models/userAccessToken');
 
 const authorizeUser = async (req, res, next) => {
     try {
-        
+
         const authHeader = req.headers.authorization;
 
-        if (authHeader) {
-            
+        if (typeof authHeader != undefined) {
+
             const bearerToken = authHeader.split(' ')[1];
 
             const token = await UserAccessToken.findOne({ token: bearerToken });
 
             if (!token) {
-                throw "Token expired";
+                throw "Invalid authorization token";
             }
 
             const user = await User.findOne({ _id: token.userId });

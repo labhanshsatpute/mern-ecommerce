@@ -1,22 +1,22 @@
 const mongoose = require('mongoose');
 
-const userAccessTokenSchema = mongoose.Schema({
+const userPasswordResetOtpSchema = mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-        required: true,
+        required: true
     },
-    token: {
+    otp: {
         type: String,
         required: true,
     },
     expiresAt: {
         type: Date,
         default: Date.now,
-        expires: 30 * 86400
+        expires: 600
     }
 });
 
-const userAccessToken = mongoose.model('UserAccessToken', userAccessTokenSchema);
+const userPasswordResetOtp = mongoose.model("UserPasswordResetOtp", userPasswordResetOtpSchema);
 
-module.exports = userAccessToken;
+module.exports = userPasswordResetOtp;
