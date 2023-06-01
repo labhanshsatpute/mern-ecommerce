@@ -89,7 +89,7 @@ const handleLogin = async (req, res) => {
 
         const token = user.generateAuthToken();
 
-        await new UserAccessToken({ user_id: user._id, token: token }).save();
+        await new UserAccessToken({ userId: user._id, token: token }).save();
 
         return res.status(200).send({
             status: true,
@@ -106,7 +106,13 @@ const handleLogin = async (req, res) => {
             message: "Internal server error",
         });
     }
-
 }
 
-module.exports = { handleRegister, handleLogin }
+const handleUser = async (req, res) => {
+    return res.status(200).send({
+        status: true,
+        data: req.user,
+    });
+}
+
+module.exports = { handleRegister, handleLogin, handleUser }
