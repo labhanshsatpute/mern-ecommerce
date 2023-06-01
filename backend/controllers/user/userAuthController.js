@@ -3,10 +3,10 @@ const { User, validate } = require('../../models/user');
 const UserAccessToken = require('../../models/userAccessToken');
 const bcrypt = require('bcrypt');
 
-const handleRegister = async (req,res) => {
+const handleRegister = async (req, res) => {
 
     try {
-        
+
         const { error } = validate(req.body);
         if (error) {
             return res.status(400).send({
@@ -15,23 +15,23 @@ const handleRegister = async (req,res) => {
             });
         }
 
-        const user_email_exists = await User.findOne({ email: req.body.email });
-        if (user_email_exists) {
+        const userEmailExists = await User.findOne({ email: req.body.email });
+        if (userEmailExists) {
             return res.status(400).send({
                 status: false,
                 message: "Email already in use"
             });
         }
 
-        const user_phone_exists = await User.findOne({ phone: req.body.phone });
-        if (user_phone_exists) {
+        const userPhoneExists = await User.findOne({ phone: req.body.phone });
+        if (userPhoneExists) {
             return res.status(400).send({
                 status: false,
                 message: "Phone already in use"
             });
         }
 
-        const salt = await bcrypt.genSalt(Number(process.env.SALT)); 
+        const salt = await bcrypt.genSalt(Number(process.env.SALT));
         const hashPassword = await bcrypt.hash(req.body.password, salt);
 
         const user = await new User({ ...req.body, password: hashPassword }).save();
@@ -51,7 +51,7 @@ const handleRegister = async (req,res) => {
 }
 
 
-const handleLogin = async (req,res) => {
+const handleLogin = async (req, res) => {
 
     const validate = (data) => {
         const schema = joi.object({
@@ -62,7 +62,7 @@ const handleLogin = async (req,res) => {
     }
 
     try {
-        
+
         const { error } = validate(req.body);
         if (error) {
             return res.status(400).send({
