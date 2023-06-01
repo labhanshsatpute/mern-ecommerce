@@ -13,7 +13,7 @@ connection();
 app.get('/', (req, res) => {
     return res.status(200).send({
         status: true,
-        message: "Hello"
+        message: "Hello from serve"
     });
 });
 
