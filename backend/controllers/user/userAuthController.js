@@ -13,7 +13,7 @@ const handleRegister = async (req, res) => {
         if (error) {
             return res.status(400).send({
                 status: false,
-                message: error.details[0].message
+                message: error.details[0].message           
             });
         }
 
@@ -215,4 +215,10 @@ const handleResetPassword = async (req, res) => {
     }
 }
 
-module.exports = { handleRegister, handleLogin, handleUser, handleSendPasswordResetOTP, handleResetPassword }
+module.exports = { 
+    handleRegister, 
+    handleLogin, 
+    handleUser, 
+    handleSendPasswordResetOTP, 
+    handleResetPassword 
+}

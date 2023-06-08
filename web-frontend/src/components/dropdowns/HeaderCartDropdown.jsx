@@ -41,7 +41,6 @@ const HeaderCartDropdown = () => {
   }
 
   const handleClickOutside = (event) => {
-    console.log(dropdownRef);
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setState(true);
     }
