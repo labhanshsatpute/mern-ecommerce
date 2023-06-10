@@ -13,7 +13,7 @@ const handleRegister = async (req, res) => {
         if (error) {
             return res.status(400).send({
                 status: false,
-                message: error.details[0].message           
+                message: error.details[0].message
             });
         }
 
@@ -110,7 +110,7 @@ const handleLogin = async (req, res) => {
     }
 }
 
-const handleUser = async (req, res) => {
+const handleGetUser = async (req, res) => {
     return res.status(200).send({
         status: true,
         data: req.user,
@@ -127,7 +127,7 @@ const handleSendPasswordResetOTP = async (req, res) => {
     }
 
     try {
-        
+
         const { error } = validate(req.body);
         if (error) {
             return res.status(400).send({
@@ -144,7 +144,7 @@ const handleSendPasswordResetOTP = async (req, res) => {
             });
         }
 
-        const otp = Math.floor((Math.random()*1000000)+1);
+        const otp = Math.floor((Math.random() * 1000000) + 1);
 
         mail("MERN Ecommerce Backend", user.email, "Password Reset OTP", `Your password reset OTP is ${otp}`);
 
@@ -176,7 +176,7 @@ const handleResetPassword = async (req, res) => {
     }
 
     try {
-        
+
         const { error } = validate(req.body);
         if (error) {
             return res.status(400).send({
@@ -196,10 +196,10 @@ const handleResetPassword = async (req, res) => {
         const salt = await bcrypt.genSalt(Number(process.env.SALT));
         const hashPassword = await bcrypt.hash(req.body.password, salt);
 
-        const user = await User.findOneAndUpdate({ _id: otp.userId },{
+        const user = await User.findOneAndUpdate({ _id: otp.userId }, {
             password: hashPassword
         });
-        
+
         await UserPasswordResetOtp.findOneAndDelete({ userId: user._id });
 
         return res.status(200).send({
@@ -215,10 +215,101 @@ const handleResetPassword = async (req, res) => {
     }
 }
 
-module.exports = { 
-    handleRegister, 
-    handleLogin, 
-    handleUser, 
-    handleSendPasswordResetOTP, 
-    handleResetPassword 
+const handleUpdateUser = async (req, res) => {
+
+    try {
+
+        const emailExist = await User.findOne({ email: req.body.email, _id: { $ne: req.user._id } });
+        if (emailExist) {
+            return res.status(400).send({
+                status: false,
+                message: "Email already in use"
+            });
+        }
+
+        const phoneExist = await User.findOne({ phone: req.body.phone, _id: { $ne: req.user._id } });
+        if (phoneExist) {
+            return res.status(400).send({
+                status: false,
+                message: "Phone already in use"
+            });
+        }
+
+        const user = await User.findByIdAndUpdate(req.user._id, {
+            name: req.body.name,
+            email: req.body.email,
+            phone: req.body.phone,
+            gender: req.body.gender
+        }, { new: true });
+
+        return res.status(200).send({
+            status: true,
+            data: user
+        });
+
+    } catch (error) {
+        return res.status(500).send({
+            status: false,
+            message: "Internal server error",
+        });
+    }
+}
+
+const handleUpdatePassword = async (req, res) => {
+
+    const validate = (data) => {
+        const schema = joi.object({
+            currentPassword: joi.string().required().label('Current Password'),
+            newPassword: joi.string().required().label('New Password')
+        });
+        return schema.validate(data);
+    }
+
+    try {
+
+        const { error } = validate(req.body);
+        if (error) {
+            return res.status(400).send({
+                status: false,
+                message: error.details[0].message
+            })
+        }
+
+        const verifyPassword = await bcrypt.compare(req.body.currentPassword, req.user.password);
+        if (!verifyPassword) {
+            return res.status(401).send({
+                status: false,
+                message: "Wrong Password"
+            });
+        }
+
+        const salt = await bcrypt.genSalt(Number(process.env.SALT));
+        const hashPassword = await bcrypt.hash(req.body.newPassword, salt);
+
+        await User.findByIdAndUpdate(req.user.id, {
+            password: hashPassword
+        }, { new: true });
+
+        return res.status(200).send({
+            status: true,
+            message: "Password successfully updated"
+        });
+
+    } catch (error) {
+        return res.status(500).send({
+            status: false,
+            message: "Internal server error",
+        });
+    }
+
+}
+
+module.exports = {
+    handleRegister,
+    handleLogin,
+    handleGetUser,
+    handleSendPasswordResetOTP,
+    handleResetPassword,
+    handleUpdateUser,
+    handleUpdatePassword
 }
