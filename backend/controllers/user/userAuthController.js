@@ -4,6 +4,7 @@ const UserAccessToken = require('../../models/userAccessToken');
 const bcrypt = require('bcrypt');
 const UserPasswordResetOtp = require('../../models/userPasswordResetOtp');
 const mail = require('../../config/mail');
+const { unlinkSync, existsSync } = require('fs');
 
 const handleRegister = async (req, res) => {
 
@@ -286,7 +287,7 @@ const handleUpdatePassword = async (req, res) => {
         const salt = await bcrypt.genSalt(Number(process.env.SALT));
         const hashPassword = await bcrypt.hash(req.body.newPassword, salt);
 
-        await User.findByIdAndUpdate(req.user.id, {
+        await User.findByIdAndUpdate(req.user._id, {
             password: hashPassword
         }, { new: true });
 
@@ -304,11 +305,23 @@ const handleUpdatePassword = async (req, res) => {
 }
 
 const handleProfileUpload = async (req, res) => {
+    
     try {
-        console.log(req.file);
+
+        const user = await User.findById(req.user._id);
+
+        if (user.profileImage) {
+            if (existsSync(user.profileImage)) unlinkSync(user.profileImage);
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(req.user._id, {
+            profileImage: req.file.path
+        }, { new: true });
+
         return res.status(201).send({
             status: true,
             message: "File successfully uploaded",
+            data: updatedUser
         });
     } catch (error) {
         return res.status(500).send({
