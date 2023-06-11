@@ -22,7 +22,6 @@ app.use(cors());
 
 app.use('/storage', express.static('storage'));
 app.use('/api/user',userRoutes);
-app.use('/api/user',userRoutes);
 
 const port = process.env.PORT || 8000;
 
