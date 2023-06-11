@@ -301,7 +301,21 @@ const handleUpdatePassword = async (req, res) => {
             message: "Internal server error",
         });
     }
+}
 
+const handleProfileUpload = async (req, res) => {
+    try {
+        console.log(req.file);
+        return res.status(201).send({
+            status: true,
+            message: "File successfully uploaded",
+        });
+    } catch (error) {
+        return res.status(500).send({
+            status: false,
+            message: "Internal server error",
+        });
+    }
 }
 
 module.exports = {
@@ -311,5 +325,6 @@ module.exports = {
     handleSendPasswordResetOTP,
     handleResetPassword,
     handleUpdateUser,
-    handleUpdatePassword
+    handleUpdatePassword,
+    handleProfileUpload
 }

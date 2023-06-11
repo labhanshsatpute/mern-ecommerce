@@ -9,6 +9,10 @@ const authorizeUser = async (req, res, next) => {
 
         const authHeader = req.headers.authorization;
 
+        if (!authHeader) {
+            throw "Please provide authorization token";
+        }
+
         if (typeof authHeader != undefined) {
 
             const bearerToken = authHeader.split(' ')[1];
@@ -42,6 +46,10 @@ const authorizeAdmin = async (req, res, next) => {
     try {
 
         const authHeader = req.headers.authorization;
+
+        if (!authHeader) {
+            throw "Please provide authorization token";
+        }
 
         if (typeof authHeader != undefined) {
 
