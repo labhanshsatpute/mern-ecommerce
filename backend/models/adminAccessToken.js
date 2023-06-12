@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const adminAccessTokenSchema = new mongoose.Schema({
+const adminAccessTokenSchema = mongoose.Schema({
     adminId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Admin",

@@ -61,7 +61,7 @@ const authorizeAdmin = async (req, res, next) => {
                 throw "Invalid authorization token";
             }
 
-            const admin = Admin.findOne({ _id: token.adminId });
+            const admin = await Admin.findOne({ _id: token.adminId });
 
             req.admin = admin;
 

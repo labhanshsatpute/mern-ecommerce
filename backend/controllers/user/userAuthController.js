@@ -39,7 +39,7 @@ const handleRegister = async (req, res) => {
 
         const user = await new User({ ...req.body, password: hashPassword }).save();
 
-        return res.status(400).send({
+        return res.status(201).send({
             status: false,
             message: "User successfully created",
             data: user,
@@ -76,15 +76,15 @@ const handleLogin = async (req, res) => {
 
         const user = await User.findOne({ email: req.body.email });
         if (!user) {
-            return res.status(401).send({
+            return res.status(400).send({
                 status: false,
-                message: "Email Address dose not exists"
+                message: "Email dose not exists"
             });
         }
 
         const verifyPassword = await bcrypt.compare(req.body.password, user.password);
         if (!verifyPassword) {
-            return res.status(401).send({
+            return res.status(400).send({
                 status: false,
                 message: "Wrong Password"
             });
