@@ -3,8 +3,8 @@ const { User, validate } = require('../../models/user');
 const UserAccessToken = require('../../models/userAccessToken');
 const bcrypt = require('bcrypt');
 const UserPasswordResetOtp = require('../../models/userPasswordResetOtp');
-const mail = require('../../config/mail');
 const { unlinkSync, existsSync } = require('fs');
+const sendMail = require('../../config/sendMail');
 
 const handleRegister = async (req, res) => {
 
@@ -78,7 +78,7 @@ const handleLogin = async (req, res) => {
         if (!user) {
             return res.status(400).send({
                 status: false,
-                message: "Email dose not exists"
+                message: "Email does not exists"
             });
         }
 
@@ -141,13 +141,19 @@ const handleSendPasswordResetOTP = async (req, res) => {
         if (!user) {
             return res.status(401).send({
                 status: false,
-                message: "Email Address dose not exists"
+                message: "Email does not exists"
             });
         }
 
         const otp = Math.floor((Math.random() * 1000000) + 1);
 
-        mail("MERN Ecommerce Backend", user.email, "Password Reset OTP", `Your password reset OTP is ${otp}`);
+        const passwordRestMail = {
+            to: user.email,
+            subject: "Password Reset OTP",
+            message: `Your password reset OTP is ${otp}`
+        }
+
+        sendMail(passwordRestMail);
 
         await UserPasswordResetOtp.findOneAndDelete({ userId: user._id });
 
@@ -188,7 +194,7 @@ const handleResetPassword = async (req, res) => {
 
         const otp = await UserPasswordResetOtp.findOne({ otp: req.body.otp });
         if (!otp) {
-            return res.status(401).send({
+            return res.status(400).send({
                 status: false,
                 message: "Invalid OTP"
             });
