@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const fileUpload = require('../config/fileUpload');
 const adminAuthController = require('../controllers/admin/adminAuthController');
+const adminCategoryController = require('../controllers/admin/adminCategoryController');
 const { authorizeAdmin } = require('../middlewares/auth');
 
 router.post('/auth/register', adminAuthController.handleRegister);
@@ -12,5 +13,19 @@ router.get('/auth', authorizeAdmin, adminAuthController.handleGetAdmin);
 router.patch('/auth', authorizeAdmin, adminAuthController.handleUpdateAdmin);
 router.patch('/auth/password', authorizeAdmin, adminAuthController.handleUpdatePassword);
 router.post('/auth/profile', authorizeAdmin, fileUpload.single('profileImage'), adminAuthController.handleProfileUpload);
+
+router.get('/category', authorizeAdmin, adminCategoryController.handleGetAllCategory);
+router.get('/category/:id', authorizeAdmin, adminCategoryController.handleGetParticularCategory);
+router.post('/category', authorizeAdmin, adminCategoryController.handleCreateCategory);
+router.patch('/category', authorizeAdmin, adminCategoryController.handleUpdateCategory);
+router.delete('/category/:id', authorizeAdmin, adminCategoryController.handleDeleteCategory);
+router.post('/category/images', authorizeAdmin, fileUpload.fields([
+    {
+        name: "thumbnail", maxCount: 1
+    },
+    {
+        name: "coverImage", maxCount: 1,
+    }
+]), adminCategoryController.handleUploadCategoryImages);
 
 module.exports = router;
