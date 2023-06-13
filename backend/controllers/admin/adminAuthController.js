@@ -3,14 +3,13 @@ const { Admin, validate } = require('../../models/admin');
 const AdminAccessToken = require('../../models/adminAccessToken');
 const bcrypt = require('bcrypt');
 const AdminPasswordResetOtp = require('../../models/adminPasswordResetOtp');
-const mail = require('../../config/sendMail');
-const adminAccessToken = require('../../models/adminAccessToken');
 const sendMail = require('../../config/sendMail');
+const { existsSync, unlinkSync } = require('fs');
 
 const handleRegister = async (req, res) => {
-    
+
     try {
-        
+
         const { error } = validate(req.body);
         if (error) {
             return res.status(400).send({
@@ -62,7 +61,7 @@ const handleLogin = async (req, res) => {
             password: joi.string().required().label('Password')
         });
         return schema.validate(data);
-    } 
+    }
 
     try {
 
@@ -81,7 +80,7 @@ const handleLogin = async (req, res) => {
                 message: "Email does not exists"
             });
         }
-        
+
         const verifyPassword = await bcrypt.compare(req.body.password, admin.password);
         if (!verifyPassword) {
             return res.status(400).send({
@@ -92,7 +91,7 @@ const handleLogin = async (req, res) => {
 
         const token = admin.generateAuthToken();
 
-        await new adminAccessToken({ adminId: admin._id, token: token }).save();
+        await new AdminAccessToken({ adminId: admin._id, token: token }).save();
 
         return res.status(200).send({
             status: true,
@@ -119,7 +118,7 @@ const handleGetAdmin = (req, res) => {
 }
 
 const handleSendPasswordResetOTP = async (req, res) => {
-    
+
     const validate = (data) => {
         const schema = joi.object({
             email: joi.string().email().required().label('Email')
@@ -128,7 +127,7 @@ const handleSendPasswordResetOTP = async (req, res) => {
     }
 
     try {
-        
+
         const { error } = validate(req.body);
         if (error) {
             return res.status(400).send({
@@ -172,7 +171,7 @@ const handleSendPasswordResetOTP = async (req, res) => {
     }
 }
 
-const handleResetPassword = async (req, res) =>{
+const handleResetPassword = async (req, res) => {
 
     const validate = (data) => {
         const schema = joi.object({
@@ -183,7 +182,7 @@ const handleResetPassword = async (req, res) =>{
     }
 
     try {
-        
+
         const { error } = validate(req.body);
         if (error) {
             return res.status(400).send({
@@ -201,11 +200,11 @@ const handleResetPassword = async (req, res) =>{
         }
 
         const salt = await bcrypt.genSalt(Number(process.env.SALT));
-        const hashPassword =  await bcrypt.hash(req.body.passwordm, salt);
+        const hashPassword = await bcrypt.hash(req.body.password, salt);
 
-        const admin = await Admin.findOneAndUpdate({ _id: otp.adminId },{
+        const admin = await Admin.findByIdAndUpdate(otp.adminId, {
             password: hashPassword
-        });
+        }, { new: true });
 
         await AdminPasswordResetOtp.findOneAndDelete({ adminId: admin._id });
 
@@ -222,9 +221,129 @@ const handleResetPassword = async (req, res) =>{
     }
 }
 
+const handleUpdateAdmin = async (req, res) => {
+
+    try {
+
+        const emailExist = await Admin.findOne({ email: req.body.email, _id: { $ne: req.admin._id } });
+        if (emailExist) {
+            return res.status(400).send({
+                status: false,
+                message: "Email already in use"
+            });
+        }
+
+        const phoneExist = await Admin.findOne({ phone: req.body.phone, _id: { $ne: req.admin._id } });
+        if (phoneExist) {
+            return res.status(400).send({
+                status: false,
+                message: "Phone already in use"
+            });
+        }
+
+        const admin = await Admin.findByIdAndUpdate(req.admin._id, {
+            name: req.body.name,
+            email: req.body.email,
+            phone: req.body.phone,
+            gender: req.body.gender
+        }, { new: true });
+
+        return res.status(200).send({
+            status: true,
+            data: admin
+        });
+
+    } catch (error) {
+        return res.status(500).send({
+            status: false,
+            message: "Internal server error",
+        });
+    }
+}
+
+const handleUpdatePassword = async (req, res) => {
+
+    const validate = (data) => {
+        const schema = joi.object({
+            currentPassword: joi.string().required().label('Current Password'),
+            newPassword: joi.string().required().label('New Password')
+        });
+        return schema.validate(data);
+    }
+
+    try {
+
+        const { error } = validate(req.body);
+        if (error) {
+            return res.status(400).send({
+                status: true,
+                message: error.details[0].message
+            });
+        }
+
+        const verifyPassword = await bcrypt.compare(req.body.currentPassword, req.admin.password);
+        if (!verifyPassword) {
+            return res.status(400).send({
+                status: false,
+                message: "Wrong Password"
+            });
+        }
+
+        const salt = await bcrypt.genSalt(Number(process.env.SALT));
+        const hashPassword = await bcrypt.hash(req.body.newPassword, salt);
+
+        await Admin.findByIdAndUpdate(req.admin._id, {
+            password: hashPassword
+        }, { new: true });
+
+        return res.status(200).send({
+            status: true,
+            message: "Password successfully updated"
+        });
+
+    } catch (error) {
+        return res.status(500).send({
+            status: false,
+            message: "Internal server error",
+        });
+    }
+}
+
+const handleProfileUpload = async (req, res) => {
+
+    try {
+
+        const admin = await Admin.findOne({ _id: req.admin._id });
+
+        if (admin.profileImage) {
+            if (existsSync(admin.profileImage)) unlinkSync(admin.profileImage);
+        }
+
+        const updatedAdmin = await Admin.findByIdAndUpdate(req.admin._id, {
+            profileImage: req.file.path
+        }, { new: true });
+
+        return res.status(200).send({
+            status: true,
+            message: "File successfully uploaded",
+            data: updatedAdmin
+        });
+
+    } catch (error) {
+        return res.status(500).send({
+            status: false,
+            message: "Internal server error",
+        });
+    }
+}
+
 module.exports = {
     handleRegister,
     handleLogin,
     handleGetAdmin,
-    handleSendPasswordResetOTP
+    handleSendPasswordResetOTP,
+    handleResetPassword,
+    handleUpdateAdmin,
+    handleUpdatePassword,
+    handleProfileUpload
 }

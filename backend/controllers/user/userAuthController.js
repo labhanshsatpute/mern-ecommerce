@@ -284,7 +284,7 @@ const handleUpdatePassword = async (req, res) => {
 
         const verifyPassword = await bcrypt.compare(req.body.currentPassword, req.user.password);
         if (!verifyPassword) {
-            return res.status(401).send({
+            return res.status(400).send({
                 status: false,
                 message: "Wrong Password"
             });
@@ -311,7 +311,7 @@ const handleUpdatePassword = async (req, res) => {
 }
 
 const handleProfileUpload = async (req, res) => {
-    
+
     try {
 
         const user = await User.findById(req.user._id);
@@ -324,11 +324,12 @@ const handleProfileUpload = async (req, res) => {
             profileImage: req.file.path
         }, { new: true });
 
-        return res.status(201).send({
+        return res.status(200).send({
             status: true,
             message: "File successfully uploaded",
             data: updatedUser
         });
+
     } catch (error) {
         return res.status(500).send({
             status: false,
