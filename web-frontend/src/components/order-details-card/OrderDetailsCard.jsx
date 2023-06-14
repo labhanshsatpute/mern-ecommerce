@@ -5,7 +5,7 @@ const OrderDetailsCard = () => {
   return (
     <React.Fragment>
       <figure>
-        <div className="space-y-2 p-5 border shadow-md">
+        <div className="space-y-2 md:p-10 sm:p-0 sm:pb-7 border-b rounded-md md:bg-ascent md:bg-opacity-5">
           <div className="flex items-center justify-between">
             <h1 className="font-semibold md:text-xl sm:text-lg">Order ID - 100230</h1>
             <p className="alert-warning-sm">Order Placed</p>
@@ -31,7 +31,7 @@ const OrderDetailsCard = () => {
               <p className="text-base font-medium text-slate-800 flex items-center justify-start mb-1">{process.env.REACT_APP_CURRENCY}599.00</p>
             </div>
             <div className="pt-2">
-              <Link to={"/order/details/34343"} className="btn-light-sm">View Order Details</Link>
+              <Link to={"/order/details/34343"} className="btn-secondary-sm">View Order Details</Link>
             </div>
           </div>
         </div>

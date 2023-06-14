@@ -4,13 +4,13 @@ import LoadingBar from "react-top-loading-bar";
 import "../styles/style.css";
 
 import Template from "../layouts/Template";
-import Dashboard from "../layouts/Dashboard";
 
 import Home from "../views/Home";
-import AccountInformation from "../views/dashboard/AccountInformation";
+import Dashboard from "../views/dashboard/Dashboard";
 import OrderList from "../views/dashboard/OrderList";
 import OrderDetails from "../views/dashboard/OrderDetails";
 import AddressBook from "../views/dashboard/AddressBook";
+import Login from "../views/auth/Login";
 
 const App = () => {
 
@@ -34,14 +34,14 @@ const App = () => {
         <Route path="/" element={<Template/>}>
           <Route index={true} element={<Home/>} />
 
+          <Route path="/login" element={<Login/>} />
+
           {/* Dashboard Routes */}
-          <Route element={<Dashboard/>}>
-            <Route path="/dashboard" element={<AccountInformation/>} />
+            <Route path="/dashboard" element={<Dashboard/>} />
             <Route path="/orders" element={<OrderList/>} />
             <Route path="/order/details/:id" element={<OrderDetails/>} />
             <Route path="/address-book" element={<AddressBook/>} />
             {/* <Route path="/address-edit/:id" element={</>} /> */}
-          </Route>
 
         </Route>
       </Routes>

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,7 +8,7 @@
 
 @layer base {
     html {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
     body {
         zoom: 0.9;
@@ -18,55 +18,55 @@
 
 @layer components {
     .container {
-        @apply sm:max-w-[28rem] md:max-w-[94rem] md:px-2 sm:px-4 self-center;
+        @apply sm:max-w-[28rem] md:max-w-[94rem] md:px-2 sm:px-6 self-center;
     }  
 }
 
 /* Buttons (Start) */
 .btn-primary-sm {
-  @apply px-4 py-2 border text-xs border-ascent bg-ascent font-medium text-white relative hover:bg-ascent-dark active:bg-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-4 py-2 border text-xs border-ascent bg-ascent font-medium text-white relative hover:bg-ascent-dark active:bg-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out rounded
 }
 .btn-primary-md {
-  @apply px-5 py-3 border text-sm border-ascent bg-ascent font-medium text-white relative hover:bg-ascent-dark active:bg-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-5 py-3 border text-sm border-ascent bg-ascent font-medium text-white relative hover:bg-ascent-dark active:bg-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out rounded-md
 }
 .btn-primary-lg {
-  @apply px-6 py-3 border text-lg border-ascent bg-ascent font-medium text-white relative hover:bg-ascent-dark active:bg-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-6 py-3 border text-lg border-ascent bg-ascent font-medium text-white relative hover:bg-ascent-dark active:bg-ascent-dark tracking-widest transition duration-300 ease-in-out hover:ease-in-out rounded-lg
 }
 .btn-secondary-sm {
-  @apply px-4 py-2 border text-xs border-ascent border-opacity-5 bg-ascent bg-opacity-10 font-medium text-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-4 py-2 border text-xs border-ascent border-opacity-5 bg-ascent bg-opacity-10 font-medium text-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out rounded
 }
 .btn-secondary-md {
-  @apply px-5 py-3 border text-sm border-ascent border-opacity-5 bg-ascent bg-opacity-10 font-medium text-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-5 py-3 border text-sm border-ascent border-opacity-5 bg-ascent bg-opacity-10 font-medium text-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out rounded-md
 }
 .btn-secondary-lg {
-  @apply px-6 py-3 border text-lg border-ascent border-opacity-5 bg-ascent bg-opacity-10 font-medium text-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-6 py-3 border text-lg border-ascent border-opacity-5 bg-ascent bg-opacity-10 font-medium text-ascent relative hover:bg-opacity-20 active:bg-opacity-20 tracking-widest transition duration-300 ease-in-out hover:ease-in-out rounded-lg
 }
 .btn-light-sm {
-  @apply px-4 py-2 border text-xs border-slate-200 border-opacity-5 bg-slate-200 font-medium tracking-widest text-gray-800 relative hover:bg-slate-800 active:bg-slate-800 hover:text-white active:text-white transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-4 py-2 border text-xs border-slate-200 border-opacity-5 bg-slate-200 font-medium tracking-widest text-gray-800 relative hover:bg-slate-800 active:bg-slate-800 hover:text-white active:text-white transition duration-300 ease-in-out hover:ease-in-out rounded
 }
 .btn-light-md {
-  @apply px-5 py-3 border text-sm border-slate-200 border-opacity-5 bg-slate-200 font-medium tracking-widest text-gray-800 relative hover:bg-slate-800 active:bg-slate-800 hover:text-white active:text-white transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-5 py-3 border text-sm border-slate-200 border-opacity-5 bg-slate-200 font-medium tracking-widest text-gray-800 relative hover:bg-slate-800 active:bg-slate-800 hover:text-white active:text-white transition duration-300 ease-in-out hover:ease-in-out rounded-md
 }
 .btn-light-lg {
-  @apply px-6 py-3 border text-lg border-slate-200 border-opacity-5 bg-slate-200 font-medium tracking-widest text-gray-800 relative hover:bg-slate-800 active:bg-slate-800 hover:text-white active:text-white transition duration-300 ease-in-out hover:ease-in-out
+  @apply px-6 py-3 border text-lg border-slate-200 border-opacity-5 bg-slate-200 font-medium tracking-widest text-gray-800 relative hover:bg-slate-800 active:bg-slate-800 hover:text-white active:text-white transition duration-300 ease-in-out hover:ease-in-out rounded-lg
 }
 .btn-danger-sm {
-  @apply px-4 py-2 border text-xs border-red-500 bg-red-500 font-medium text-white relative hover:bg-red-700 active:bg-red-700 tracking-widest
+  @apply px-4 py-2 border text-xs border-red-500 bg-red-500 font-medium text-white relative hover:bg-red-700 active:bg-red-700 tracking-widest rounded
 }
 .btn-danger-md {
-  @apply px-5 py-3 border text-sm border-red-500 bg-red-500 font-medium text-white relative hover:bg-red-700 active:bg-red-700 tracking-widest
+  @apply px-5 py-3 border text-sm border-red-500 bg-red-500 font-medium text-white relative hover:bg-red-700 active:bg-red-700 tracking-widest rounded-md
 }
 .btn-danger-lg {
-  @apply px-6 py-3 border text-lg border-red-500 bg-red-500 font-medium text-white relative hover:bg-red-700 active:bg-red-700 tracking-widest
+  @apply px-6 py-3 border text-lg border-red-500 bg-red-500 font-medium text-white relative hover:bg-red-700 active:bg-red-700 tracking-widest rounded-lg
 }
 .btn-danger-secondary-sm {
-  @apply px-4 py-2 border text-xs border-red-500 border-opacity-5 bg-red-500 bg-opacity-10 font-medium text-red-500 relative hover:bg-opacity-20 active:bg-opacity-20
+  @apply px-4 py-2 border text-xs border-red-500 border-opacity-5 bg-red-500 bg-opacity-10 font-medium text-red-500 relative hover:bg-opacity-20 active:bg-opacity-20 rounded
 }
 .btn-danger-secondary-md {
-  @apply px-5 py-3 border text-sm border-red-500 border-opacity-5 bg-red-500 bg-opacity-10 font-medium text-red-500 relative hover:bg-opacity-20 active:bg-opacity-20
+  @apply px-5 py-3 border text-sm border-red-500 border-opacity-5 bg-red-500 bg-opacity-10 font-medium text-red-500 relative hover:bg-opacity-20 active:bg-opacity-20 rounded-md
 }
 .btn-danger-secondary-lg {
-  @apply px-6 py-3 border text-lg border-red-500 border-opacity-5 bg-red-500 bg-opacity-10 font-medium text-red-500 relative hover:bg-opacity-20 active:bg-opacity-20
+  @apply px-6 py-3 border text-lg border-red-500 border-opacity-5 bg-red-500 bg-opacity-10 font-medium text-red-500 relative hover:bg-opacity-20 active:bg-opacity-20 rounded-lg
 }
 button[disabled] {
   @apply opacity-70
