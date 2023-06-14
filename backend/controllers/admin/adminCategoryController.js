@@ -37,26 +37,11 @@ const handleCreateCategory = async (req, res) => {
     }
 }
 
-const handleUploadCategoryImages = async (req, res) => {
+const handleUpdateCategoryImages = async (req, res) => {
 
-    const validate = (data) => {
-        const schema = joi.object({
-            id: joi.string().required().label('ID')
-        });
-        return schema.validate(data);    
-    }
-    
     try {
-
-        const { error } = validate(req.body);
-        if (error) {
-            return res.status(400).send({
-                status: false,
-                message: error.details[0].message
-            });
-        }
         
-        const category = await Category.findById(req.body.id);
+        const category = await Category.findById(req.params.id);
         if (!category) {
             return res.status(400).send({
                 status: false,
@@ -100,18 +85,6 @@ const handleUploadCategoryImages = async (req, res) => {
 
 const handleUpdateCategory = async (req, res) => {
 
-    const validate = (data) => {
-        const schema = joi.object({
-            id: joi.string().required().label("Id"),
-            name: joi.string().min(1).max(250).required().label('Name'),
-            slug: joi.string().min(1).max(250).required().label('Slug'),
-            parentCategoryId: joi.string().label('Parent category id'),
-            summary: joi.string().min(1).max(500).label('Summary'),
-            description: joi.string().min(1).max(1000).label('Description')
-        });
-        return schema.validate(data);
-    }
-
     try {
         
         const { error } = validate(req.body);
@@ -122,7 +95,7 @@ const handleUpdateCategory = async (req, res) => {
             });
         }
 
-        const categoryExist = await Category.findById(req.body.id);
+        const categoryExist = await Category.findById(req.params.id);
         if (!categoryExist) {
             return res.status(400).send({
                 status: false,
@@ -140,7 +113,7 @@ const handleUpdateCategory = async (req, res) => {
             }
         }
 
-        const slugExist = await Category.findOne({ slug: req.body.slug, _id: { $ne: req.body.id } });
+        const slugExist = await Category.findOne({ slug: req.body.slug, _id: { $ne: req.params.id } });
         if (slugExist) {
             return res.status(400).send({
                 status: false,
@@ -148,7 +121,7 @@ const handleUpdateCategory = async (req, res) => {
             });
         }
 
-        const category = await Category.findByIdAndUpdate(req.body.id,{ ...req.body }, { new: true });
+        const category = await Category.findByIdAndUpdate(req.params.id,{ ...req.body }, { new: true });
 
         return res.status(200).send({
             status: true,
@@ -237,11 +210,42 @@ const handleGetParticularCategory = async (req, res) => {
     }
 }
 
+const handleUpdateCategoryStatus = async (req, res) => {
+
+    try {
+
+        const category = await Category.findById(req.params.id);
+        if (!category) {
+            return res.status(400).send({
+                status: false,
+                message: "Category not found for required id"
+            });
+        }
+
+        const updatedCategory = await Category.findByIdAndUpdate(category._id,{
+            status: !category.status
+        }, { new: true });
+
+        return res.status(200).send({
+            status: true,
+            message: "Category updated",
+            data: updatedCategory
+        });
+
+    } catch (error) {
+        return res.status(500).send({
+            status: false,
+            message: "Internal server error"
+        });
+    }
+}
+
 module.exports = { 
     handleCreateCategory,
-    handleUploadCategoryImages,
+    handleUpdateCategoryImages,
     handleUpdateCategory,
     handleDeleteCategory,
     handleGetAllCategory,
-    handleGetParticularCategory
+    handleGetParticularCategory,
+    handleUpdateCategoryStatus
 }

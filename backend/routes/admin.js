@@ -16,16 +16,20 @@ router.post('/auth/profile', authorizeAdmin, fileUpload.single('profileImage'), 
 
 router.get('/category', authorizeAdmin, adminCategoryController.handleGetAllCategory);
 router.get('/category/:id', authorizeAdmin, adminCategoryController.handleGetParticularCategory);
+
 router.post('/category', authorizeAdmin, adminCategoryController.handleCreateCategory);
-router.patch('/category', authorizeAdmin, adminCategoryController.handleUpdateCategory);
+router.patch('/category/:id', authorizeAdmin, adminCategoryController.handleUpdateCategory);
+
 router.delete('/category/:id', authorizeAdmin, adminCategoryController.handleDeleteCategory);
-router.post('/category/images', authorizeAdmin, fileUpload.fields([
+
+router.put('/category/:id/status', authorizeAdmin, adminCategoryController.handleUpdateCategoryStatus);
+router.put('/category/:id/images/', authorizeAdmin, fileUpload.fields([
     {
         name: "thumbnail", maxCount: 1
     },
     {
         name: "coverImage", maxCount: 1,
     }
-]), adminCategoryController.handleUploadCategoryImages);
+]), adminCategoryController.handleUpdateCategoryImages);
 
 module.exports = router;
