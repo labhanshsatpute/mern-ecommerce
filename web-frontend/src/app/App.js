@@ -11,6 +11,7 @@ import OrderList from "../views/dashboard/OrderList";
 import OrderDetails from "../views/dashboard/OrderDetails";
 import AddressBook from "../views/dashboard/AddressBook";
 import Login from "../views/auth/Login";
+import AddAddress from "../views/dashboard/AddAddress";
 
 const App = () => {
 
@@ -41,6 +42,7 @@ const App = () => {
             <Route path="/orders" element={<OrderList/>} />
             <Route path="/order/details/:id" element={<OrderDetails/>} />
             <Route path="/address-book" element={<AddressBook/>} />
+            <Route path="/address-book/add" element={<AddAddress/>} />
             {/* <Route path="/address-edit/:id" element={</>} /> */}
 
         </Route>

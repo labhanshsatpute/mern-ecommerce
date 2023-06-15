@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const AddressBookCard = () => {
   return (
     <React.Fragment>
-      <figure className="md:border sm:border-b md:shadow-md">
-        <div className="md:p-5 sm:py-5 space-y-4">
+      <figure className="md:p-10 sm:p-0 sm:pb-7 border-b rounded-md md:bg-ascent md:bg-opacity-5">
+        <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h1 className="font-semibold text-xl">Home</h1>
             <div className="flex space-x-2">

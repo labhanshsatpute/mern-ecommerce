@@ -85,13 +85,13 @@ button[disabled] {
   @apply flex flex-col
 }
 .input-box-sm {
-  @apply px-5 py-2 border text-xs outline-ascent border-slate-300 font-medium bg-white
+  @apply px-4 py-2 border text-xs outline-ascent border-slate-300 font-medium bg-white rounded placeholder:font-normal
 }
 .input-box-md {
-  @apply px-6 py-3 border text-sm outline-ascent border-slate-300 font-medium bg-white
+  @apply px-5 py-3 border text-sm outline-ascent border-slate-300 font-medium bg-white rounded-md placeholder:font-normal
 }
 .input-box-lg {
-  @apply px-7 py-3 border text-lg outline-ascent border-slate-300 font-medium bg-white
+  @apply px-6 py-3 border text-lg outline-ascent border-slate-300 font-medium bg-white rounded-lg placeholder:font-normal
 }
 .input-box-sm.input-invalid,
 .input-box-md.input-invalid,
@@ -103,6 +103,9 @@ button[disabled] {
 }
 .input-error {
   @apply text-xs font-medium text-red-600 mt-2 text-left
+}
+.input-label em {
+  @apply text-xs font-medium text-red-600 not-italic
 }
 .input-box-sm.tagify,
 .input-box-md.tagify,
