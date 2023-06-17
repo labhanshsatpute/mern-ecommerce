@@ -87,7 +87,7 @@ const Dashboard = () => {
                 {/* Address Card (End) */}
 
                 {/* Setting Card (Start) */}
-                <Link to={"/orders"} className="group">
+                <Link to={"/account-setting"} className="group">
                   <figure className="bg-ascent bg-opacity-5 rounded-md w-full shadow-none hover:shadow-xl transition duration-300 ease-in-out hover:ease-in-out">
                     <div className="md:p-9 sm:py-9 px-2 flex flex-col space-y-5 items-center justify-center">
                       <img src="/images/dashboard/information.png" className="md:h-[70px] sm:h-[50px] w-auto" alt="orders" />
